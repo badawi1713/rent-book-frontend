@@ -11,7 +11,10 @@ const Carousel = () => {
         >
           <div className="carousel-card">
             <div className="carousel-image-card">
-              <img src="./public/images/carousel1.png" alt="carousel img" />
+              <img
+                src="https://pastelbooks.id/wp-content/uploads/2019/12/DILAN-REPUBLISHED.png"
+                alt="carousel img"
+              />
             </div>
             <div className="carousel-text">
               <h2>Dilan 1990</h2>
@@ -21,7 +24,10 @@ const Carousel = () => {
 
           <div className="carousel-card">
             <div className="carousel-image-card">
-              <img src="./public/images/carousel2.png" alt="carousel img" />
+              <img
+                src="https://radarmalang.id/file/2018/03/Ubur-ubur.jpg"
+                alt="carousel img"
+              />
             </div>
             <div className="carousel-text">
               <h2>Ubur-Ubur Lembur</h2>
@@ -31,7 +37,10 @@ const Carousel = () => {
 
           <div className="carousel-card">
             <div className="carousel-image-card">
-              <img src="./public/images/carousel3.png" alt="carousel img" />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/id/thumb/8/8e/Laskar_pelangi_sampul.jpg/220px-Laskar_pelangi_sampul.jpg"
+                alt="carousel img"
+              />
             </div>
             <div className="carousel-text">
               <h2>Laskar Pelangi</h2>

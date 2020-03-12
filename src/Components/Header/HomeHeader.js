@@ -2,7 +2,7 @@ import React from "react";
 
 const HomeHeader = () => {
   return (
-    <div class="content-title">
+    <div className="content-title">
       <h2>Book Lists</h2>
     </div>
   );

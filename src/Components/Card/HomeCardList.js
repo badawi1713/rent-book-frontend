@@ -1,44 +1,72 @@
-import React from "react";
+import React, { Component } from "react";
+import Axios from "axios";
+import Truncate from "react-truncate";
+import { Link } from "react-router-dom";
+const URL_STRING = "/api/v1/books/";
+class HomeCardList extends Component {
+  state = {
+    library: []
+  };
 
-const HomeCardList = () => {
-  return (
-    <div>
-      <section className="content-container">
-        <div className="card-container">
-          <a href="book_details.html">
-            <img src="./public/images/buku1.png" alt="book-cover" />
-            <div className="card-text-container">
-              <h3>Dilan 1990</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                convallis lacus mi, sit amet vehicula nisl consequat id.
-              </p>
+  getBookData = () => {
+    Axios.get(URL_STRING)
+      .then(({ data }) => {
+        // console.log(data);
+        this.setState({
+          library: data.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  componentDidMount = () => {
+    this.getBookData();
+  };
+  render() {
+    const { library } = this.state;
+    console.log(library);
+    return (
+      <div>
+        <section className="content-container">
+          {library.length < 1 ? (
+            <div>
+              <h1>Data is empty</h1>
             </div>
-          </a>
-        </div>
-        <div className="card-container">
-          <img src="./public/images/buku2.png" alt="book-cover" />
-          <div className="card-text-container">
-            <h3>Sebuah Seni untuk ...</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              convallis lacus mi, sit amet vehicula nisl consequat id.
-            </p>
-          </div>
-        </div>
-        <div className="card-container">
-          <img src="./public/images/buku3.png" alt="book-cover" />
-          <div className="card-text-container">
-            <h3>React Native</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              convallis lacus mi, sit amet vehicula nisl consequat id.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
+          ) : (
+            library &&
+            library.map(item => (
+              <Link to={{ pathname: `/book-details/${item.id}`, data: item }}>
+                <div key={item.id} className="card-container">
+                  <a href="#">
+                    <img src={item.imageURL} alt="book-cover" />
+                    <div className="card-text-container">
+                      <h3>
+                        <Truncate lines={1}>{item.title}</Truncate>
+                      </h3>
+                      <p>
+                        <Truncate
+                          lines={2}
+                          ellipsis={
+                            <span>
+                              ... <a href="/link/to/article">Read more</a>
+                            </span>
+                          }
+                        >
+                          {item.description}
+                        </Truncate>
+                      </p>
+                      {/* <p>{}</p> */}
+                    </div>
+                  </a>
+                </div>
+              </Link>
+            ))
+          )}
+        </section>
+      </div>
+    );
+  }
+}
 
 export default HomeCardList;
