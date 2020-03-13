@@ -1,6 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+const BookNavbar = props => {
+  const history = useHistory();
 
-const BookNavbar = () => {
+  function handleClick() {
+    history.push("/home");
+  }
   const editModal = () => {
     // Get the modal
     let editModal = document.getElementById("editModal");
@@ -62,20 +67,17 @@ const BookNavbar = () => {
   return (
     <div>
       <section className="cover-image-container">
-        <img
-          src="https://pastelbooks.id/wp-content/uploads/2019/12/DILAN-REPUBLISHED.png"
-          alt="book-cover"
-        />
+        <img src={props.imageURL} alt="book-cover" />
         <nav className="top-navbar">
           <div className="back-button">
-            <a href="/home">
+            <button onClick={handleClick}>
               <i className="fa fa-arrow-circle-left"></i>
-            </a>
+            </button>
           </div>
           <div className="menu-items">
             <ul>
               <li>
-                <a
+                <button
                   onClick={editModal}
                   id="edit"
                   data-toggle="modal"
@@ -83,10 +85,10 @@ const BookNavbar = () => {
                   src="#"
                 >
                   Edit
-                </a>
+                </button>
               </li>
               <li>
-                <a
+                <button
                   onClick={deleteModal}
                   id="delete"
                   data-toggle="modal"
@@ -94,7 +96,7 @@ const BookNavbar = () => {
                   src="#"
                 >
                   Delete
-                </a>
+                </button>
               </li>
             </ul>
           </div>

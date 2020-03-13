@@ -77,6 +77,7 @@ class AddModal extends Component {
                   </div>
                   <div className="col-80">
                     <input
+                      required
                       type="text"
                       id="imageURL"
                       name="imageURL"
@@ -93,6 +94,7 @@ class AddModal extends Component {
                   </div>
                   <div className="col-80">
                     <input
+                      required
                       type="date"
                       id="releasedDate"
                       name="released_date"
@@ -109,6 +111,7 @@ class AddModal extends Component {
                   </div>
                   <div className="col-80">
                     <input
+                      required
                       type="text"
                       id="bookTitle"
                       name="title"
@@ -131,17 +134,15 @@ class AddModal extends Component {
                       }}
                       id="genre"
                       name="genre"
+                      required
                     >
+                      <option value="">Please Choose a Genre</option>
                       {genreData.length < 1 ? (
                         <option value="0">Genre Data is Empty</option>
                       ) : (
                         genreData &&
                         genreData.map(item => (
-                          <option
-                            selected="selected"
-                            key={item.id}
-                            value={item.id}
-                          >
+                          <option key={item.id} value={item.id}>
                             {item.name}
                           </option>
                         ))
@@ -164,6 +165,7 @@ class AddModal extends Component {
                   </div>
                   <div className="col-80">
                     <textarea
+                      required
                       id="description"
                       name="description"
                       placeholder="Book's Description"
@@ -175,7 +177,12 @@ class AddModal extends Component {
                   </div>
                 </div>
                 <div className="row">
-                  <button onClick={this.postBookData}>Save</button>
+                  <button
+                    type="submit"
+                    onClick={e => this.postBookData(e.preventDefault)}
+                  >
+                    Save
+                  </button>
                 </div>
               </form>
             </div>

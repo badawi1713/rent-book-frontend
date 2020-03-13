@@ -4,6 +4,14 @@
     padding: 0;
 }
 
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
 body {
     height: 100%;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -60,14 +68,21 @@ ul {
     padding-right: 20px;
 }
 
-.top-navbar .back-button a i {
+.top-navbar .back-button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.top-navbar .back-button button i {
+
     color: white;
     font-size: 30pt;
     margin: 20px;
 }
 
 .top-navbar .menu-items {
-    font-size: 18pt;
+
     position: absolute;
     top: 20px;
     right: 20px;
@@ -84,8 +99,12 @@ ul {
     text-align: center;
 }
 
-.top-navbar .menu-items ul li a {
+.top-navbar .menu-items ul li button {
+    font-size: 18pt;
+    background-color: transparent;
     color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .top-navbar .menu-items ul li:hover {

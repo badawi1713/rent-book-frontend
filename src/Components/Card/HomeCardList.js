@@ -30,35 +30,38 @@ class HomeCardList extends Component {
       <div>
         <section className="content-container">
           {library.length < 1 ? (
-            <div>
+            <div className="data-empty">
               <h1>Data is empty</h1>
             </div>
           ) : (
             library &&
-            library.map(item => (
-              <Link to={{ pathname: `/book-details/${item.id}`, data: item }}>
-                <div key={item.id} className="card-container">
-                  <a href="#">
-                    <img src={item.imageURL} alt="book-cover" />
-                    <div className="card-text-container">
-                      <h3>
-                        <Truncate lines={1}>{item.title}</Truncate>
-                      </h3>
-                      <p>
-                        <Truncate
-                          lines={2}
-                          ellipsis={
-                            <span>
-                              ... <a href="/link/to/article">Read more</a>
+            library.map((item, index) => (
+              <Link to={{ pathname: `/books/${item.id}`, book: item }}>
+                <div key={index} className="card-container">
+                  {/* <a href="#"> */}
+                  <img src={item.imageURL} alt="book-cover" />
+                  <div className="card-text-container">
+                    <h3>
+                      <Truncate lines={1}>{item.title}</Truncate>
+                    </h3>
+                    <p>
+                      <Truncate
+                        lines={2}
+                        ellipsis={
+                          <span>
+                            ...{" "}
+                            <span style={{ color: "gray", fontSize: "16px" }}>
+                              Read more
                             </span>
-                          }
-                        >
-                          {item.description}
-                        </Truncate>
-                      </p>
-                      {/* <p>{}</p> */}
-                    </div>
-                  </a>
+                          </span>
+                        }
+                      >
+                        {item.description}
+                      </Truncate>
+                    </p>
+                    {/* <p>{}</p> */}
+                  </div>
+                  {/* </a> */}
                 </div>
               </Link>
             ))
