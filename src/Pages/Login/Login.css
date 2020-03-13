@@ -250,7 +250,7 @@ ul {
   line-height: 1.6;
 }
 
-.footer footer p > span {
+.footer footer p>span {
   color: black;
   font-weight: bold;
 }
@@ -264,7 +264,7 @@ ul {
 /* Media Query */
 
 @media screen and (max-width: 1200px) {
-  .grid-container {
+  .grid-container-index {
     display: grid;
     grid-template-columns: 1fr;
   }
