@@ -40,7 +40,7 @@ class BookDetails extends React.Component {
         {book &&
           book.map((item, index) => (
             <div key={index}>
-              <BookDetailNavbar imageURL={item.imageURL} />
+              <BookDetailNavbar imageURL={item.imageURL} title={item.title} />
               <div className="grid-templates-content">
                 <BookContent
                   description={item.description}

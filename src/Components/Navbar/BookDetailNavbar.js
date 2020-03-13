@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 const BookNavbar = props => {
   const history = useHistory();
@@ -66,6 +67,11 @@ const BookNavbar = props => {
 
   return (
     <div>
+      <div>
+        <Helmet>
+          <title>{props.title}</title>
+        </Helmet>
+      </div>
       <section className="cover-image-container">
         <img src={props.imageURL} alt="book-cover" />
         <nav className="top-navbar">

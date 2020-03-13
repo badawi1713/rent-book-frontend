@@ -1,13 +1,20 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import Section from "../../Components/Section/Section";
 import RegisterForm from "../../Components/Register/RegisterForm";
 import "./Register.css";
 
 const Register = () => {
+  const Title = "Register";
   return (
-    <div className="grid-container">
-      <Section />
-      <RegisterForm />
+    <div>
+      <Helmet>
+        <title>{Title}</title>
+      </Helmet>
+      <div className="grid-container-index">
+        <Section />
+        <RegisterForm />
+      </div>
     </div>
   );
 };
