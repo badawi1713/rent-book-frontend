@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
 import Home from "./Pages/Home/Home";
 import BookDetails from "./Pages/Details/BookDetails";
 class App extends Component {
@@ -7,23 +9,10 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Route exact={true} path={"/"} component={Home} />
+          <Route exact={true} path={"/"} component={Login} />
+          <Route path={"/register"} component={Register} />
           <Route path={"/home"} component={Home} />
-          <Route
-            // path={"/books"}
-            // component={BookDetails}
-            path={"/books/:id"}
-            component={BookDetails}
-            // component={props => {
-            //   return (
-            //     <BookDetails
-            //       {...this.props}
-            //       bookURL={`http://localhost:3001/api/v1/books/${props.match.params}`}
-            //       key={props.history.location}
-            //     />
-            //   );
-            // }}
-          />
+          <Route path={"/books/:id"} component={BookDetails} />
         </Router>
       </div>
     );

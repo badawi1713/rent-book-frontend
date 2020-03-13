@@ -1,5 +1,5 @@
 import React from "react";
-import Profile from "../../public/images/profile.jpg";
+import Profile from "../../assets/images/profile.jpg";
 
 const Sidebar = () => {
   const closeNav = () => {

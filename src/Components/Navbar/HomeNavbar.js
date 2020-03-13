@@ -1,5 +1,5 @@
 import React from "react";
-import bookLogo from "../../public/images/bookshelf-logo.png";
+import bookLogo from "../../assets/images/bookshelf-logo.png";
 
 const HomeNavbar = () => {
   const openNav = () => {

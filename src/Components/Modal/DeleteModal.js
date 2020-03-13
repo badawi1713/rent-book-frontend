@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./styles/DeleteModal.css";
-import checkedLogo from "../../public/images/checked.png";
+import checkedLogo from "../../assets/images/checked.png";
 import Axios from "axios";
 const URL_STRING = "/api/v1/books/delete/";
 const DeleteModal = props => {
