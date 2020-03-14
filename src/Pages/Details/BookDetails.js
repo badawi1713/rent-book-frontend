@@ -50,7 +50,7 @@ class BookDetails extends React.Component {
                 />
                 <BorrowButton imageURL={item.imageURL} />
               </div>
-              <EditModal />
+              <EditModal data={item} />
               <DeleteModal id={item.id} title={item.title} />
             </div>
           ))}

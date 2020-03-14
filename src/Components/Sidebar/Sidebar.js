@@ -57,7 +57,7 @@ const Sidebar = () => {
               <a href="#">History</a>
             </li>
             <li>
-              <a id="add" onClick={addModal}>
+              <a id="add" onClick={e => addModal(e.preventDefault)}>
                 Add Book
               </a>
             </li>

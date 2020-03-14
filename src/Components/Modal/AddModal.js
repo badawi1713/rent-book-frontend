@@ -177,10 +177,7 @@ class AddModal extends Component {
                   </div>
                 </div>
                 <div className="row">
-                  <button
-                    type="submit"
-                    onClick={e => this.postBookData(e.preventDefault)}
-                  >
+                  <button type="submit" onClick={this.postBookData()}>
                     Save
                   </button>
                 </div>
