@@ -69,11 +69,11 @@ const BookNavbar = props => {
     <div>
       <div>
         <Helmet>
-          <title>{props.title}</title>
+          <title>{props.data.title}</title>
         </Helmet>
       </div>
       <section className="cover-image-container">
-        <img src={props.imageURL} alt="book-cover" />
+        <img src={props.data.imageURL} alt="book-cover" />
         <nav className="top-navbar">
           <div className="back-button">
             <button onClick={handleClick}>

@@ -40,18 +40,13 @@ class BookDetails extends React.Component {
         {book &&
           book.map((item, index) => (
             <div key={index}>
-              <BookDetailNavbar imageURL={item.imageURL} title={item.title} />
+              <BookDetailNavbar data={item} />
               <div className="grid-templates-content">
-                <BookContent
-                  description={item.description}
-                  genre={item.genre}
-                  title={item.title}
-                  releasedDate={item.released_date}
-                />
-                <BorrowButton imageURL={item.imageURL} />
+                <BookContent data={item} />
+                <BorrowButton data={item} />
               </div>
               <EditModal data={item} />
-              <DeleteModal id={item.id} title={item.title} />
+              <DeleteModal data={item} />
             </div>
           ))}
         <div style={{ marginTop: "60px" }}></div>

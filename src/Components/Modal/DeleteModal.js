@@ -6,7 +6,7 @@ import Axios from "axios";
 const URL_STRING = "/api/v1/books/delete/";
 const DeleteModal = props => {
   const deleteBookData = () => {
-    Axios.delete(URL_STRING + props.id)
+    Axios.delete(URL_STRING + props.data.id)
       .then(result => {
         console.log(result);
         console.log("Data has been deleted!");
@@ -27,7 +27,7 @@ const DeleteModal = props => {
           <div className="body-wrapper">
             <img src={checkedLogo} alt="" srcSet="" />
             <h2>
-              Data <span>{props.title}</span> Berhasil Dihapus!
+              Data <span>{props.data.title}</span> Berhasil Dihapus!
             </h2>
           </div>
         </div>

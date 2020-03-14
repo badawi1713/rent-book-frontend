@@ -1,7 +1,7 @@
 import React from "react";
 
-import Truncate from "react-truncate";
-import { Link } from "react-router-dom";
+// import Truncate from "react-truncate";
+// import { Link } from "react-router-dom";
 import bookLogo from "../../assets/images/logo.png";
 import HomeCardList from "../Card/HomeCardList";
 import Axios from "axios";
