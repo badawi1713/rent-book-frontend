@@ -51,17 +51,21 @@ const Sidebar = () => {
         <nav className="aside-nav">
           <ul>
             <li>
+              {/* eslint-disable-next-line */}
               <a href="#">Explore</a>
             </li>
             <li>
+              {/* eslint-disable-next-line */}
               <a href="#">History</a>
             </li>
             <li>
+              {/* eslint-disable-next-line */}
               <a id="add" onClick={e => addModal(e.preventDefault)}>
                 Add Book
               </a>
             </li>
             <li>
+              {/* eslint-disable-next-line */}
               <a href="#">Logout</a>
             </li>
           </ul>

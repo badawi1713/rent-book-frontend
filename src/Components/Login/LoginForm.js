@@ -5,24 +5,24 @@ const LoginForm = () => {
   return (
     <div>
       {/* right section */}
-      <section class="right-section">
-        <div class="top-logo">
+      <section className="right-section">
+        <div className="top-logo">
           <img src={Logo} alt="logo-cover" srcset="" />
         </div>
-        <div class="form-header">
+        <div className="form-header">
           <header>Login</header>
           <p>Welcome Back, Please Login to your account</p>
         </div>
-        <div class="login-form">
-          <div class="login-form-body">
+        <div className="login-form">
+          <div className="login-form-body">
             <form action="" method="post">
-              <div class="input-wrapper login">
-                <div class="input-items">
+              <div className="input-wrapper login">
+                <div className="input-items">
                   <label for="">Email Address</label>
                   <br />
                   <input type="email" name="" id="" placeholder="Your email" />
                 </div>
-                <div class="input-items password">
+                <div className="input-items password">
                   <label for="">Password</label>
                   <br />
                   <input
@@ -34,26 +34,28 @@ const LoginForm = () => {
                 </div>
               </div>
 
-              <div class="forgot-password">
+              <div className="forgot-password">
                 <ul>
                   <li>
                     <input type="checkbox" />
                     <label>Remember Me</label>
                   </li>
                   <li>
+                    {/* eslint-disable-next-line */}
                     <a href="#">Forgot Password</a>
                   </li>
                 </ul>
               </div>
 
-              <div class="form-btn">
+              <div className="form-btn">
                 <ul>
                   <li>
                     <button type="submit">Login</button>
                   </li>
                   <li>
                     <Link to={"/register"}>
-                      <a href="register.html">
+                      {/* eslint-disable-next-line */}
+                      <a href="#">
                         <button type="button">Sign Up</button>
                       </a>
                     </Link>
@@ -63,7 +65,7 @@ const LoginForm = () => {
             </form>
           </div>
         </div>
-        <div class="footer login-footer">
+        <div className="footer login-footer">
           <footer>
             <p>By signing up, you agree to Book’s</p>
             <p>

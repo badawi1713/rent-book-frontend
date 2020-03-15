@@ -1,85 +1,153 @@
 import React from "react";
 import Logo from "../../assets/images/bookshelf-logo.png";
-import { Link } from "react-router-dom";
-const RegisterForm = () => {
-  return (
-    <div>
-      <div class="right-section">
-        <div class="top-logo">
-          <img src={Logo} alt="logo-cover" srcset="" />
-        </div>
-        <div class="form-header header-register">
-          <header>Register</header>
-          <p>Welcome Back, Please Register to create account</p>
-        </div>
-        <div class="login-form">
-          <div class="login-form-body">
-            <form action="" method="post">
-              <div class="input-wrapper register-form-input">
-                <div class="input-items">
-                  <label for="">Username</label>
-                  <br />
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="Input username"
-                  />
+import Axios from "axios";
+import { Link, withRouter } from "react-router-dom";
+
+class RegisterForm extends React.Component {
+  state = {
+    username: "",
+    fullname: "",
+    email: "",
+    password: ""
+  };
+
+  registerNewUser = e => {
+    e.preventDefault();
+    const { username, fullname, email, password } = this.state;
+
+    const data = {
+      username,
+      fullname,
+      email,
+      password
+    };
+
+    Axios.post("/api/v1/users/register", data)
+      .then(res => {
+        if (res.status === 201) {
+          alert("Register Success");
+          try {
+            this.props.history.push("/login");
+          } catch (err) {
+            console.log("Something's wrong");
+          }
+        }
+      })
+      .catch(err => {
+        alert("Your email or password is wrong");
+      });
+  };
+  render() {
+    return (
+      <div>
+        <div className="right-section">
+          <div className="top-logo">
+            <img src={Logo} alt="logo-cover" srcset="" />
+          </div>
+          <div className="form-header header-register">
+            <header>Register</header>
+            <p>Welcome Back, Please Register to create account</p>
+          </div>
+          <div className="login-form">
+            <div className="login-form-body">
+              <form action="">
+                <div className="input-wrapper register-form-input">
+                  <div className="input-items">
+                    <label for="">Username</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.username}
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Input username"
+                      onChange={e => {
+                        this.setState({ username: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="input-items">
+                    <label for="">Fullname</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.fullname}
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Input fullname"
+                      onChange={e => {
+                        this.setState({ fullname: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="input-items">
+                    <label for="">Email Address</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.email}
+                      type="email"
+                      name=""
+                      id=""
+                      placeholder="Input email"
+                      onChange={e => {
+                        this.setState({ email: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="input-items">
+                    <label for="">Password</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.password}
+                      type="password"
+                      name=""
+                      id=""
+                      placeholder="Input password"
+                      onChange={e => {
+                        this.setState({ password: e.target.value });
+                      }}
+                    />
+                  </div>
                 </div>
-                <div class="input-items">
-                  <label for="">Fullname</label>
-                  <br />
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="Input fullname"
-                  />
+                <div className="form-btn">
+                  <ul>
+                    <li>
+                      <button
+                        type="submit"
+                        onClick={e => this.registerNewUser(e)}
+                      >
+                        Sign Up
+                      </button>
+                    </li>
+                    <li>
+                      <Link to={"/"}>
+                        {/* eslint-disable-next-line */}
+                        <a href="#">
+                          <button type="button">Sign In</button>
+                        </a>
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
-                <div class="input-items">
-                  <label for="">Email Address</label>
-                  <br />
-                  <input type="email" name="" id="" placeholder="Input email" />
-                </div>
-                <div class="input-items">
-                  <label for="">Password</label>
-                  <br />
-                  <input
-                    type="password"
-                    name=""
-                    id=""
-                    placeholder="Input password"
-                  />
-                </div>
-              </div>
-              <div class="form-btn">
-                <ul>
-                  <li>
-                    <button type="submit">Sign Up</button>
-                  </li>
-                  <li>
-                    <Link to={"/"}>
-                      <a href="index.html">
-                        <button type="button">Sign In</button>
-                      </a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </form>
+              </form>
+            </div>
+          </div>
+          <div className="footer">
+            <footer>
+              <p>By signing up, you agree to Book’s</p>
+              <p>
+                <span>Terms and Conditions</span> & <span>Privacy Policy</span>
+              </p>
+            </footer>
           </div>
         </div>
-        <div class="footer">
-          <footer>
-            <p>By signing up, you agree to Book’s</p>
-            <p>
-              <span>Terms and Conditions</span> & <span>Privacy Policy</span>
-            </p>
-          </footer>
-        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default RegisterForm;
+export default withRouter(RegisterForm);

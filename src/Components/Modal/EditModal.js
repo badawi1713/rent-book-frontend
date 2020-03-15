@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import "./styles/EditModal.css";
+import { withRouter } from "react-router-dom";
 
 class editModal extends React.Component {
   constructor(props) {
@@ -40,6 +41,12 @@ class editModal extends React.Component {
     Axios.patch(`/api/v1/books/update/${this.state.id}`, updatedBook)
       .then(result => {
         console.log(result);
+        try {
+          alert("Update Successfull");
+          this.props.history.push(`/books/${this.state.id}`);
+        } catch (err) {
+          console.log("Something's wrong");
+        }
       })
       .catch(error => {
         console.log(error);
@@ -190,4 +197,4 @@ class editModal extends React.Component {
   }
 }
 
-export default editModal;
+export default withRouter(editModal);

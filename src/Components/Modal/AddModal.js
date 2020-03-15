@@ -14,6 +14,8 @@ class AddModal extends Component {
   };
 
   postBookData = () => {
+    // event.preventDefault();
+
     const {
       title,
       description,
@@ -35,6 +37,14 @@ class AddModal extends Component {
     Axios.post(URL_STRING + "books/add", book)
       .then(result => {
         console.log(result);
+        if (result.data.status === 201) {
+          alert("Insert new book success");
+          try {
+            this.props.history.push("/home");
+          } catch (error) {
+            console.log("Failed to insert new book");
+          }
+        }
       })
       .catch(error => {
         console.log(error);
@@ -148,15 +158,6 @@ class AddModal extends Component {
                         ))
                       )}
                     </select>
-                    {/* <input
-                      type="text"
-                      id="genre"
-                      name="genre"
-                      placeholder="Book's Genre"
-                      onChange={e => {
-                        this.setState({ genre: e.target.value });
-                      }}
-                    /> */}
                   </div>
                 </div>
                 <div className="row">
@@ -177,7 +178,7 @@ class AddModal extends Component {
                   </div>
                 </div>
                 <div className="row">
-                  <button type="submit" onClick={this.postBookData()}>
+                  <button type="submit" onClick={() => this.postBookData()}>
                     Save
                   </button>
                 </div>

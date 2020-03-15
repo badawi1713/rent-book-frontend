@@ -6,6 +6,7 @@ class BorrowButton extends React.Component {
 
     this.state = {
       id: props.data.id,
+      // available: "",
       imageURL: props.data.imageURL,
       available: props.data.available,
       loading: false
@@ -64,7 +65,9 @@ class BorrowButton extends React.Component {
             <div className="book-cover-img">
               <img src={this.state.imageURL} alt="book-cover.img" />
             </div>
-            <div className="borrow-btn">{buttonStatus}</div>
+            <form>
+              <div className="borrow-btn">{buttonStatus}</div>
+            </form>
           </aside>
         </section>
       </div>
