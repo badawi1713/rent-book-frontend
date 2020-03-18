@@ -41,9 +41,9 @@ ul {
 .carousel-container {
     display: grid;
     grid-area: carousel-section;
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
 
-    /* background-color: black; */
+    background-color: black;
 }
 
 .content-title {

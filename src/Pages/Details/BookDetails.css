@@ -139,8 +139,8 @@ ul {
     margin-right: 6px;
     margin-bottom: 6px;
     text-align: center;
-    width: 100px;
-    padding: 5px;
+    width: auto;
+    padding: 5px 10px 5px 10px;
     font-weight: bold;
     background-color: #FBCC38;
     border-radius: 15px;

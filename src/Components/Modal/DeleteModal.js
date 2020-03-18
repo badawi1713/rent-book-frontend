@@ -2,9 +2,11 @@ import React from "react";
 
 import "./styles/DeleteModal.css";
 import checkedLogo from "../../assets/images/checked.png";
-import Axios from "axios";
+// import Axios from "axios";
 import { withRouter } from "react-router-dom";
-const URL_STRING = "/api/v1/books/delete/";
+import { connect } from "react-redux";
+import { deleteBookData } from "../../Redux/actions/books";
+// const URL_STRING = "/api/v1/books/delete/";
 
 class DeleteModal extends React.Component {
   constructor(props) {
@@ -15,19 +17,23 @@ class DeleteModal extends React.Component {
     };
   }
   deleteBookData = () => {
-    Axios.delete(URL_STRING + this.state.id)
-      .then(result => {
-        console.log(result);
-        console.log("Data has been deleted!");
-        try {
-          this.props.history.push("/home");
-        } catch (err) {
-          console.log("Something's wrong");
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.dispatch(deleteBookData(this.state.id));
+
+    this.props.history.push("/home");
+
+    // Axios.delete(URL_STRING + this.state.id)
+    //   .then(result => {
+    //     console.log(result);
+    //     console.log("Data has been deleted!");
+    //     try {
+    //       this.props.history.push("/home");
+    //     } catch (err) {
+    //       console.log("Something's wrong");
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   };
 
   render() {
@@ -53,4 +59,10 @@ class DeleteModal extends React.Component {
   }
 }
 
-export default withRouter(DeleteModal);
+const mapStateToProps = book => {
+  return {
+    book
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(DeleteModal));

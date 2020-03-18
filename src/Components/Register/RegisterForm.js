@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../assets/images/bookshelf-logo.png";
-import Axios from "axios";
+import { connect } from "react-redux";
+import { register } from "../../Redux/actions/users";
 import { Link, withRouter } from "react-router-dom";
 
 class RegisterForm extends React.Component {
@@ -11,8 +12,8 @@ class RegisterForm extends React.Component {
     password: ""
   };
 
-  registerNewUser = e => {
-    e.preventDefault();
+  registerNewUser = () => {
+    // e.preventDefault();
     const { username, fullname, email, password } = this.state;
 
     const data = {
@@ -21,21 +22,23 @@ class RegisterForm extends React.Component {
       email,
       password
     };
+    this.props.dispatch(register(data));
+    this.props.history.push("/login");
 
-    Axios.post("/api/v1/users/register", data)
-      .then(res => {
-        if (res.status === 201) {
-          alert("Register Success");
-          try {
-            this.props.history.push("/login");
-          } catch (err) {
-            console.log("Something's wrong");
-          }
-        }
-      })
-      .catch(err => {
-        alert("Your email or password is wrong");
-      });
+    // Axios.post("/api/v1/users/register", data)
+    //   .then(res => {
+    //     if (res.status === 201) {
+    //       alert("Register Success");
+    //       try {
+    //         this.props.history.push("/login");
+    //       } catch (err) {
+    //         console.log("Something's wrong");
+    //       }
+    //     }
+    //   })
+    //   .catch(err => {
+    //     alert("Please fill all the input on register form first!");
+    //   });
   };
   render() {
     return (
@@ -50,90 +53,87 @@ class RegisterForm extends React.Component {
           </div>
           <div className="login-form">
             <div className="login-form-body">
-              <form action="">
-                <div className="input-wrapper register-form-input">
-                  <div className="input-items">
-                    <label for="">Username</label>
-                    <br />
-                    <input
-                      required
-                      value={this.state.username}
-                      type="text"
-                      name=""
-                      id=""
-                      placeholder="Input username"
-                      onChange={e => {
-                        this.setState({ username: e.target.value });
-                      }}
-                    />
-                  </div>
-                  <div className="input-items">
-                    <label for="">Fullname</label>
-                    <br />
-                    <input
-                      required
-                      value={this.state.fullname}
-                      type="text"
-                      name=""
-                      id=""
-                      placeholder="Input fullname"
-                      onChange={e => {
-                        this.setState({ fullname: e.target.value });
-                      }}
-                    />
-                  </div>
-                  <div className="input-items">
-                    <label for="">Email Address</label>
-                    <br />
-                    <input
-                      required
-                      value={this.state.email}
-                      type="email"
-                      name=""
-                      id=""
-                      placeholder="Input email"
-                      onChange={e => {
-                        this.setState({ email: e.target.value });
-                      }}
-                    />
-                  </div>
-                  <div className="input-items">
-                    <label for="">Password</label>
-                    <br />
-                    <input
-                      required
-                      value={this.state.password}
-                      type="password"
-                      name=""
-                      id=""
-                      placeholder="Input password"
-                      onChange={e => {
-                        this.setState({ password: e.target.value });
-                      }}
-                    />
-                  </div>
+              {/* <form action=""> */}
+              <div className="input-wrapper register-form-input">
+                <div className="input-items">
+                  <label for="">Username</label>
+                  <br />
+                  <input
+                    required
+                    value={this.state.username}
+                    type="text"
+                    name=""
+                    id=""
+                    placeholder="Input username"
+                    onChange={e => {
+                      this.setState({ username: e.target.value });
+                    }}
+                  />
                 </div>
-                <div className="form-btn">
-                  <ul>
-                    <li>
-                      <button
-                        type="submit"
-                        onClick={e => this.registerNewUser(e)}
-                      >
-                        Sign Up
-                      </button>
-                    </li>
-                    <li>
-                      <Link to={"/"}>
-                        {/* eslint-disable-next-line */}
-                        <a href="#">
-                          <button type="button">Sign In</button>
-                        </a>
-                      </Link>
-                    </li>
-                  </ul>
+                <div className="input-items">
+                  <label for="">Fullname</label>
+                  <br />
+                  <input
+                    required
+                    value={this.state.fullname}
+                    type="text"
+                    name=""
+                    id=""
+                    placeholder="Input fullname"
+                    onChange={e => {
+                      this.setState({ fullname: e.target.value });
+                    }}
+                  />
                 </div>
-              </form>
+                <div className="input-items">
+                  <label for="">Email Address</label>
+                  <br />
+                  <input
+                    required
+                    value={this.state.email}
+                    type="email"
+                    name=""
+                    id=""
+                    placeholder="Input email"
+                    onChange={e => {
+                      this.setState({ email: e.target.value });
+                    }}
+                  />
+                </div>
+                <div className="input-items">
+                  <label for="">Password</label>
+                  <br />
+                  <input
+                    required
+                    value={this.state.password}
+                    type="password"
+                    name=""
+                    id=""
+                    placeholder="Input password"
+                    onChange={e => {
+                      this.setState({ password: e.target.value });
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="form-btn">
+                <ul>
+                  <li>
+                    <button type="submit" onClick={this.registerNewUser}>
+                      Sign Up
+                    </button>
+                  </li>
+                  <li>
+                    <Link to={"/"}>
+                      {/* eslint-disable-next-line */}
+                      <a href="#">
+                        <button type="button">Sign In</button>
+                      </a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              {/* </form> */}
             </div>
           </div>
           <div className="footer">
@@ -150,4 +150,10 @@ class RegisterForm extends React.Component {
   }
 }
 
-export default withRouter(RegisterForm);
+const mapStateToProps = user => {
+  return {
+    user
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(RegisterForm));

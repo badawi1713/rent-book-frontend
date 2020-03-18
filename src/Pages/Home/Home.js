@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import Axios from "axios";
+
+import { connect } from "react-redux";
+import { getAllBook } from "../../Redux/actions/books";
+
 import HomeNavbar from "../../Components/Navbar/HomeNavbar";
-import Carousel from "../../Components/Carousel/Carousel";
+import HomeCarousel from "../../Components/Carousel/Carousel";
 import HomeHeader from "../../Components/Header/HomeHeader";
 import HomeCardList from "../../Components/Card/HomeCardList";
 import Sidebar from "../../Components/Sidebar/Sidebar";
@@ -17,16 +21,12 @@ class Home extends Component {
     };
   }
 
-  getAllBook = () => {
-    Axios.get(URL_STRING)
-      .then(({ data }) => {
-        this.setState({
-          library: data.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  getAllBook = async () => {
+    console.log("Book query:", this.props.data);
+    await this.props.dispatch(getAllBook());
+    this.setState({
+      library: this.props.data.book.bookData.data
+    });
   };
 
   searchBook = () => {
@@ -44,7 +44,7 @@ class Home extends Component {
   render() {
     const Title = "Home";
     const { library } = this.state;
-    console.log(library);
+    // console.log(library);
     return (
       <div>
         <div>
@@ -54,7 +54,7 @@ class Home extends Component {
         </div>
         <div className="grid-container" id="main">
           <HomeNavbar />
-          <Carousel />
+          <HomeCarousel />
           <HomeHeader />
           <HomeCardList data={library} />
         </div>
@@ -65,4 +65,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = book => {
+  return {
+    data: book
+  };
+};
+
+export default connect(mapStateToProps)(Home);

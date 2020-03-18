@@ -1,9 +1,12 @@
 import React from "react";
-import Axios from "axios";
+// import Axios from "axios";
+import { connect } from "react-redux";
+import { updateBookData } from "../../Redux/actions/books";
+import { getAllGenres } from "../../Redux/actions/genres";
 import "./styles/EditModal.css";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
-class editModal extends React.Component {
+class EditModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,32 +41,15 @@ class editModal extends React.Component {
     };
     console.log(updatedBook);
 
-    Axios.patch(`/api/v1/books/update/${this.state.id}`, updatedBook)
-      .then(result => {
-        console.log(result);
-        try {
-          alert("Update Successfull");
-          this.props.history.push(`/books/${this.state.id}`);
-        } catch (err) {
-          console.log("Something's wrong");
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.dispatch(updateBookData(this.state.id, updatedBook));
   };
 
-  renderGenreData = () => {
-    Axios.get("/api/v1/genres/")
-      .then(({ data }) => {
-        console.log(data.result);
-        this.setState({
-          genreData: data.result
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  renderGenreData = async () => {
+    await this.props.dispatch(getAllGenres());
+    console.log("genre", this.props.genres.genre);
+    this.setState({
+      genreData: this.props.genres.genre.genreData.result
+    });
   };
 
   componentDidMount = () => {
@@ -197,4 +183,10 @@ class editModal extends React.Component {
   }
 }
 
-export default withRouter(editModal);
+const mapStateToProps = genres => {
+  return {
+    genres
+  };
+};
+
+export default connect(mapStateToProps)(EditModal);
