@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const BookNavbar = props => {
   const history = useHistory();
 
-  function handleClick() {
+  function handleBackClick() {
     history.push("/home");
   }
   const editModal = () => {
@@ -76,7 +76,7 @@ const BookNavbar = props => {
         <img src={props.data.imageURL} alt="book-cover" />
         <nav className="top-navbar">
           <div className="back-button">
-            <button onClick={handleClick}>
+            <button onClick={handleBackClick}>
               <i className="fa fa-arrow-circle-left"></i>
             </button>
           </div>

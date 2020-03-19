@@ -1,5 +1,6 @@
 import React from "react";
 import Profile from "../../assets/images/profile.jpg";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const closeNav = () => {
@@ -65,8 +66,10 @@ const Sidebar = () => {
               </a>
             </li>
             <li>
-              {/* eslint-disable-next-line */}
-              <a href="#">Logout</a>
+              <Link to={"/"}>
+                {/* eslint-disable-next-line */}
+                <a href="#">Logout</a>
+              </Link>
             </li>
           </ul>
         </nav>

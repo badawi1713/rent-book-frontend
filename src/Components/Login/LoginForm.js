@@ -21,13 +21,13 @@ class LoginForm extends React.Component {
             localStorage.setItem("KEY_TOKEN", result.data.result.token);
             this.props.history.push("/home");
           } catch (error) {
-            alert("Email or Password is Wrong");
+            alert("Please fill all the input on login form first!");
           }
         }
       })
       .catch(error => {
         console.log(error);
-        alert("Please fill all the input on login form first!");
+        alert("Email or Password is Wrong");
       });
   };
 
@@ -99,8 +99,6 @@ class LoginForm extends React.Component {
                   </li>
                   <li>
                     <Link to={"/register"}>
-                      {/* eslint-disable-next-line */}
-
                       <button type="button">Sign Up</button>
                     </Link>
                   </li>

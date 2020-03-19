@@ -37,6 +37,7 @@ class DeleteModal extends React.Component {
   };
 
   render() {
+    console.log("id", this.state.id);
     return (
       <div id="deleteModal" className="delete-modal">
         <div className="delete-modal-content">

@@ -7,7 +7,7 @@ const Carousel = () => {
       <section className="carousel-container">
         <div
           className="card-carousel-wrapper js-flickity"
-          data-flickity-options='{ "freeScroll": true, "wrapAround": true }'
+          data-flickity-options='{ "freeScroll": true, "wrapAround": true , "autoPlay": true}'
         >
           <div className="carousel-card">
             <div className="carousel-image-card">

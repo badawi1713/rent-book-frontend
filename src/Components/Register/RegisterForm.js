@@ -24,21 +24,6 @@ class RegisterForm extends React.Component {
     };
     this.props.dispatch(register(data));
     this.props.history.push("/login");
-
-    // Axios.post("/api/v1/users/register", data)
-    //   .then(res => {
-    //     if (res.status === 201) {
-    //       alert("Register Success");
-    //       try {
-    //         this.props.history.push("/login");
-    //       } catch (err) {
-    //         console.log("Something's wrong");
-    //       }
-    //     }
-    //   })
-    //   .catch(err => {
-    //     alert("Please fill all the input on register form first!");
-    //   });
   };
   render() {
     return (
@@ -62,8 +47,8 @@ class RegisterForm extends React.Component {
                     required
                     value={this.state.username}
                     type="text"
-                    name=""
-                    id=""
+                    name="username"
+                    id="registerUsername"
                     placeholder="Input username"
                     onChange={e => {
                       this.setState({ username: e.target.value });
@@ -77,8 +62,8 @@ class RegisterForm extends React.Component {
                     required
                     value={this.state.fullname}
                     type="text"
-                    name=""
-                    id=""
+                    name="fullname"
+                    id="registerFullname"
                     placeholder="Input fullname"
                     onChange={e => {
                       this.setState({ fullname: e.target.value });
@@ -92,8 +77,8 @@ class RegisterForm extends React.Component {
                     required
                     value={this.state.email}
                     type="email"
-                    name=""
-                    id=""
+                    name="email"
+                    id="registerEmail"
                     placeholder="Input email"
                     onChange={e => {
                       this.setState({ email: e.target.value });
@@ -107,8 +92,8 @@ class RegisterForm extends React.Component {
                     required
                     value={this.state.password}
                     type="password"
-                    name=""
-                    id=""
+                    name="password"
+                    id="registerPassword"
                     placeholder="Input password"
                     onChange={e => {
                       this.setState({ password: e.target.value });
@@ -125,10 +110,7 @@ class RegisterForm extends React.Component {
                   </li>
                   <li>
                     <Link to={"/"}>
-                      {/* eslint-disable-next-line */}
-                      <a href="#">
-                        <button type="button">Sign In</button>
-                      </a>
+                      <button type="button">Sign In</button>
                     </Link>
                   </li>
                 </ul>

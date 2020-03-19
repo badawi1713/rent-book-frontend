@@ -13,9 +13,8 @@ const HomeCardList = props => {
         ) : (
           // props.data.filter(props.search => item.title.includes(props.search))
           props.data.map((item, index) => (
-            <Link to={{ pathname: `/books/${item.id}`, book: item }}>
-              <div key={index} className="card-container">
-                {/* <a href="#"> */}
+            <div key={index} className="card-container">
+              <Link to={{ pathname: `/books/${item.id}`, book: item }}>
                 <img src={item.imageURL} alt="book-cover" />
                 <div className="card-text-container">
                   <h3>
@@ -37,8 +36,8 @@ const HomeCardList = props => {
                     </Truncate>
                   </p>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))
         )}
       </section>

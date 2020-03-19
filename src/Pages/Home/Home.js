@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getAllBook } from "../../Redux/actions/books";
 
 import HomeNavbar from "../../Components/Navbar/HomeNavbar";
-import HomeCarousel from "../../Components/Carousel/Carousel";
+import Carousel from "../../Components/Carousel/Carousel";
 import HomeHeader from "../../Components/Header/HomeHeader";
 import HomeCardList from "../../Components/Card/HomeCardList";
 import Sidebar from "../../Components/Sidebar/Sidebar";
@@ -50,11 +50,12 @@ class Home extends Component {
         <div>
           <Helmet>
             <title>{Title}</title>
+            <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
           </Helmet>
         </div>
         <div className="grid-container" id="main">
           <HomeNavbar />
-          <HomeCarousel />
+          <Carousel />
           <HomeHeader />
           <HomeCardList data={library} />
         </div>

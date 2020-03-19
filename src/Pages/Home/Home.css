@@ -41,9 +41,9 @@ ul {
 .carousel-container {
     display: grid;
     grid-area: carousel-section;
-    /* grid-template-columns: 1fr; */
+    grid-template-columns: 1fr;
 
-    background-color: black;
+    /* background-color: black; */
 }
 
 .content-title {
@@ -200,26 +200,6 @@ ul {
     counter-increment: carousel-card;
 }
 
-/* test */
-
-/* .carousel-card {
-    margin: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    height: 100px;
-    width: 280px;
-    border-radius: 20px;
-  }
-  
-  .carousel-image-card img {
-    height: 180px;
-    object-fit: cover;
-    width: 100%;
-    border-radius: 15px;
-  }
-  
-  */
-
 .carousel-image-card img {
     height: 250px;
     object-fit: cover;
@@ -278,7 +258,6 @@ ul {
 
     /* content title */
     .content-title {
-        /* background-color: grey; */
         margin-top: 10px;
         margin-left: 0;
         grid-area: content-title;
@@ -299,12 +278,10 @@ ul {
 
     /* top-navbar */
     .top-nav-container {
-        /* display: none; */
         width: auto;
         grid-area: top-navbar;
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
         height: 100%;
-        /* margin-left: 0; */
     }
 
     .top-nav {
@@ -315,15 +292,12 @@ ul {
         justify-content: space-between;
         padding: 16px 0;
         font-size: 13px;
-        /* cursor: pointer; */
     }
 
     .top-nav .logo {
-        /* flex-direction: column;
-      display: flex; */
+
         display: none;
         width: 130px;
-        /* margin-right: 40px; */
     }
 
     .top-nav ul {
@@ -419,7 +393,6 @@ ul {
         font-weight: 520;
     }
 
-    /* grid-container */
     .grid-container {
         display: grid;
         grid-template-areas:
@@ -430,13 +403,25 @@ ul {
     }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 650px) {
     .top-nav ul {
         /* margin-left: 60px; */
-        margin-left: 60px;
+        margin-left: 90px;
         /* flex-direction: column; */
         flex-wrap: wrap;
         align-items: center;
+        display: flex;
+    }
+
+    .top-nav ul li input {
+        background: white;
+        margin: 0;
+        padding: 0 20px;
+        width: 200px;
+
+        border: 1px solid #cacaca;
+        height: 30px;
+        border-radius: 35px;
         display: flex;
     }
 }
@@ -444,7 +429,7 @@ ul {
 @media screen and (max-width: 550px) {
     .top-nav ul {
         /* margin-left: 60px; */
-        margin-left: 90px;
+        margin-left: 80px;
         /* flex-direction: column; */
         flex-wrap: wrap;
         align-items: center;

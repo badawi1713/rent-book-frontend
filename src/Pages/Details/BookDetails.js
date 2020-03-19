@@ -8,7 +8,6 @@ import DeleteModal from "../../Components/Modal/DeleteModal";
 // import Axios from "axios";
 import { connect } from "react-redux";
 import { getBookById } from "../../Redux/actions/books";
-// const URL_STRING = "/api/v1/books/";
 class BookDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -24,15 +23,6 @@ class BookDetails extends React.Component {
     this.setState({
       book: this.props.data.book.bookData.result
     });
-    // Axios.get(URL_STRING + `${this.state.id}`)
-    //   .then(({ data }) => {
-    //     this.setState({
-    //       book: data.result
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   };
 
   componentDidMount = () => {

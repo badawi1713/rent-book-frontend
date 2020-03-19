@@ -34,3 +34,17 @@ export const deleteBookData = id => {
     payload: Axios.delete("/api/v1/books/delete/" + id)
   };
 };
+
+export const borrowBook = (id, available) => {
+  return {
+    type: "BORROW_BOOK",
+    payload: Axios.patch("/api/v1/books/rent/" + id, available)
+  };
+};
+
+export const returnBook = (id, available) => {
+  return {
+    type: "RETURN_BOOK",
+    payload: Axios.patch("/api/v1/books/return/" + id, available)
+  };
+};
