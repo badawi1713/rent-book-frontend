@@ -39,6 +39,11 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getAllBook();
+
+    const token = localStorage.getItem("KEY_TOKEN");
+    if (!token) {
+      this.props.history.push("/login");
+    }
   };
 
   render() {

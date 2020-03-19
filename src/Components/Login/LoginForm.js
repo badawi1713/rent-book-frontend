@@ -1,7 +1,9 @@
 import React from "react";
 import Logo from "../../assets/images/bookshelf-logo.png";
 import { Link, withRouter } from "react-router-dom";
-import Axios from "axios";
+import { login } from "../../Redux/actions/users";
+import { connect } from "react-redux";
+// import Axios from "axios";
 class LoginForm extends React.Component {
   state = {
     email: "",
@@ -13,25 +15,8 @@ class LoginForm extends React.Component {
   postLogin = () => {
     const { email, password } = this.state;
     const userData = { email, password };
-
-    Axios.post("/api/v1/users/login", userData)
-      .then(result => {
-        console.log("token" + result.data.result.token);
-        if (result.status === 200) {
-          alert("Login Success");
-          try {
-            localStorage.setItem("KEY_TOKEN", result.data.result.token);
-            localStorage.setItem("id", result.data.result.id);
-            this.props.history.push("/home");
-          } catch (error) {
-            alert("Please fill all the input on login form first!");
-          }
-        }
-      })
-      .catch(error => {
-        console.log(error);
-        alert("Email or Password is Wrong");
-      });
+    this.props.dispatch(login(userData, this.props.history));
+    // this.props.history.push("/home");
   };
 
   render() {
@@ -124,4 +109,10 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withRouter(LoginForm);
+const mapStateToProps = user => {
+  return {
+    user
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(LoginForm));

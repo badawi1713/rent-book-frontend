@@ -75,7 +75,14 @@ class HomeNavbar extends React.Component {
               </div>
             </li>
             <li>
-              All Categories <i className="fa fa-caret-down"></i>
+              <div>
+                All Categories{" "}
+                <i className="fa fa-caret-down">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </i>
+              </div>
             </li>
             <li>
               All Time <i className="fa fa-caret-down"></i>

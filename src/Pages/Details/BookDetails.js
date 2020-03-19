@@ -27,6 +27,11 @@ class BookDetails extends React.Component {
 
   componentDidMount = () => {
     this.getBookById();
+
+    const token = localStorage.getItem("KEY_TOKEN");
+    if (!token) {
+      this.props.history.push("/login");
+    }
   };
 
   render() {

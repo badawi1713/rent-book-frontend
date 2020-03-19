@@ -62,109 +62,109 @@ class AddModal extends Component {
           </div>
           <div className="add-modal-body">
             <div className="form-wrapper">
-              {/* <form> */}
-              <div className="row">
-                <div className="col-20">
-                  <label htmlFor="image-url">URL Image</label>
+              <form>
+                <div className="row">
+                  <div className="col-20">
+                    <label htmlFor="image-url">URL Image</label>
+                  </div>
+                  <div className="col-80">
+                    <input
+                      required
+                      type="text"
+                      id="imageURL"
+                      name="imageURL"
+                      placeholder="Book's URL Image Cover"
+                      onChange={e => {
+                        this.setState({ imageURL: e.target.value });
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="col-80">
-                  <input
-                    required
-                    type="text"
-                    id="imageURL"
-                    name="imageURL"
-                    placeholder="Book's URL Image Cover"
-                    onChange={e => {
-                      this.setState({ imageURL: e.target.value });
-                    }}
-                  />
+                <div className="row">
+                  <div className="col-20">
+                    <label htmlFor="released-date">Released Date</label>
+                  </div>
+                  <div className="col-80">
+                    <input
+                      required
+                      type="date"
+                      id="releasedDate"
+                      name="released_date"
+                      placeholder="Book's Released Date"
+                      onChange={e => {
+                        this.setState({ released_date: e.target.value });
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-20">
-                  <label htmlFor="released-date">Released Date</label>
+                <div className="row">
+                  <div className="col-20">
+                    <label htmlFor="book-title">Title</label>
+                  </div>
+                  <div className="col-80">
+                    <input
+                      required
+                      type="text"
+                      id="bookTitle"
+                      name="title"
+                      placeholder="Book's Title"
+                      onChange={e => {
+                        this.setState({ title: e.target.value });
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="col-80">
-                  <input
-                    required
-                    type="date"
-                    id="releasedDate"
-                    name="released_date"
-                    placeholder="Book's Released Date"
-                    onChange={e => {
-                      this.setState({ released_date: e.target.value });
-                    }}
-                  />
+                <div className="row">
+                  <div className="col-20">
+                    <label htmlFor="image-url">Genre</label>
+                  </div>
+                  <div className="col-80">
+                    <select
+                      onChange={e => {
+                        this.setState({ genre: e.target.value });
+                        // console.log(item.name);
+                      }}
+                      id="genre"
+                      name="genre"
+                      required
+                    >
+                      <option value="">Please Choose a Genre</option>
+                      {genreData.length < 1 ? (
+                        <option value="0">Genre Data is Empty</option>
+                      ) : (
+                        genreData &&
+                        genreData.map(item => (
+                          <option key={item.id} value={item.id}>
+                            {item.name}
+                          </option>
+                        ))
+                      )}
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-20">
-                  <label htmlFor="book-title">Title</label>
+                <div className="row">
+                  <div className="col-20">
+                    <label htmlFor="book-description">Description</label>
+                  </div>
+                  <div className="col-80">
+                    <textarea
+                      required
+                      id="description"
+                      name="description"
+                      placeholder="Book's Description"
+                      style={{ height: "200px" }}
+                      onChange={e => {
+                        this.setState({ description: e.target.value });
+                      }}
+                    ></textarea>
+                  </div>
                 </div>
-                <div className="col-80">
-                  <input
-                    required
-                    type="text"
-                    id="bookTitle"
-                    name="title"
-                    placeholder="Book's Title"
-                    onChange={e => {
-                      this.setState({ title: e.target.value });
-                    }}
-                  />
+                <div className="row">
+                  <button type="submit" onClick={() => this.postBookData()}>
+                    Save
+                  </button>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-20">
-                  <label htmlFor="image-url">Genre</label>
-                </div>
-                <div className="col-80">
-                  <select
-                    onChange={e => {
-                      this.setState({ genre: e.target.value });
-                      // console.log(item.name);
-                    }}
-                    id="genre"
-                    name="genre"
-                    required
-                  >
-                    <option value="">Please Choose a Genre</option>
-                    {genreData.length < 1 ? (
-                      <option value="0">Genre Data is Empty</option>
-                    ) : (
-                      genreData &&
-                      genreData.map(item => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))
-                    )}
-                  </select>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-20">
-                  <label htmlFor="book-description">Description</label>
-                </div>
-                <div className="col-80">
-                  <textarea
-                    required
-                    id="description"
-                    name="description"
-                    placeholder="Book's Description"
-                    style={{ height: "200px" }}
-                    onChange={e => {
-                      this.setState({ description: e.target.value });
-                    }}
-                  ></textarea>
-                </div>
-              </div>
-              <div className="row">
-                <button type="submit" onClick={() => this.postBookData()}>
-                  Save
-                </button>
-              </div>
-              {/* </form> */}
+              </form>
             </div>
           </div>
         </div>

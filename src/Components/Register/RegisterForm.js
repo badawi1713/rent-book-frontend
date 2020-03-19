@@ -25,6 +25,7 @@ class RegisterForm extends React.Component {
     this.props.dispatch(register(data));
     this.props.history.push("/login");
   };
+
   render() {
     return (
       <div>
