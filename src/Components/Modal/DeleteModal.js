@@ -20,24 +20,10 @@ class DeleteModal extends React.Component {
     this.props.dispatch(deleteBookData(this.state.id));
 
     this.props.history.push("/home");
-
-    // Axios.delete(URL_STRING + this.state.id)
-    //   .then(result => {
-    //     console.log(result);
-    //     console.log("Data has been deleted!");
-    //     try {
-    //       this.props.history.push("/home");
-    //     } catch (err) {
-    //       console.log("Something's wrong");
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   };
 
   render() {
-    console.log("id", this.state.id);
+    // console.log("id", this.state.id);
     return (
       <div id="deleteModal" className="delete-modal">
         <div className="delete-modal-content">

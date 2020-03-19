@@ -48,3 +48,10 @@ export const returnBook = (id, available) => {
     payload: Axios.patch("/api/v1/books/return/" + id, available)
   };
 };
+
+export const searchBookTitle = title => {
+  return {
+    type: "SEARCH_BOOK",
+    payload: Axios.get("/api/v1/books?search=" + title)
+  };
+};

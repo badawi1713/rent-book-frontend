@@ -19,7 +19,7 @@ class BookDetails extends React.Component {
 
   getBookById = async () => {
     await this.props.dispatch(getBookById(this.state.id));
-    console.log(this.props.data);
+    // console.log(this.props.data);
     this.setState({
       book: this.props.data.book.bookData.result
     });
@@ -31,7 +31,7 @@ class BookDetails extends React.Component {
 
   render() {
     const { book } = this.state;
-    console.log(book);
+    // console.log(book);
     return (
       <div className="grid-container">
         {book &&

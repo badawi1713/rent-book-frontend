@@ -46,7 +46,7 @@ class EditModal extends React.Component {
 
   renderGenreData = async () => {
     await this.props.dispatch(getAllGenres());
-    console.log("genre", this.props.genres.genre);
+    // console.log("genre", this.props.genres.genre);
     this.setState({
       genreData: this.props.genres.genre.genreData.result
     });
@@ -58,7 +58,7 @@ class EditModal extends React.Component {
 
   render() {
     const { genreData } = this.state;
-    console.log(genreData);
+    // console.log(genreData);
     return (
       <div id="editModal" className="edit-modal">
         <div className="edit-modal-content">

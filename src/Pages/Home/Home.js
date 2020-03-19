@@ -22,7 +22,7 @@ class Home extends Component {
   }
 
   getAllBook = async () => {
-    console.log("Book query:", this.props.data);
+    // console.log("Book query:", this.props.data);
     await this.props.dispatch(getAllBook());
     this.setState({
       library: this.props.data.book.bookData.data

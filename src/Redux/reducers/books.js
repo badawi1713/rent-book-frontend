@@ -1,6 +1,7 @@
 const initialValue = {
   bookData: [],
   errorMsg: [],
+  title: "",
   isPending: false,
   isRejected: false,
   isFulfilled: false
@@ -23,6 +24,27 @@ const bookReducers = (state = initialValue, action) => {
         errorMsg: action.payload.data
       };
     case "GET_BOOK_FULFILLED":
+      return {
+        ...state,
+        isPending: false,
+        isFulfilled: true,
+        bookData: action.payload.data
+      };
+    case "SEARCH_BOOK_PENDING":
+      return {
+        ...state,
+        isPending: true,
+        isRejected: false,
+        isFulfilled: false
+      };
+    case "SEARCH_BOOK_REJECTED":
+      return {
+        ...state,
+        isPending: false,
+        isRejected: true,
+        errorMsg: action.payload.data
+      };
+    case "SEARCH_BOOK_FULFILLED":
       return {
         ...state,
         isPending: false,

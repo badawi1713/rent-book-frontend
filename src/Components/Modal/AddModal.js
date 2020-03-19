@@ -34,13 +34,13 @@ class AddModal extends Component {
       available,
       genre
     };
-    console.log(book);
+    // console.log(book);
     this.props.dispatch(postNewBook(book));
   };
 
   renderGenreData = async () => {
     await this.props.dispatch(getAllGenres());
-    console.log("genre", this.props.genres.genre);
+    // console.log("genre", this.props.genres.genre);
     this.setState({
       genreData: this.props.genres.genre.genreData.result
     });
@@ -52,7 +52,7 @@ class AddModal extends Component {
 
   render() {
     const { genreData } = this.state;
-    console.log(genreData);
+    // console.log(genreData);
     return (
       <div id="addModal" className="add-modal">
         <div className="add-modal-content">

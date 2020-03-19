@@ -5,7 +5,9 @@ import Axios from "axios";
 class LoginForm extends React.Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    token: "",
+    id: ""
   };
 
   postLogin = () => {
@@ -19,6 +21,7 @@ class LoginForm extends React.Component {
           alert("Login Success");
           try {
             localStorage.setItem("KEY_TOKEN", result.data.result.token);
+            localStorage.setItem("id", result.data.result.id);
             this.props.history.push("/home");
           } catch (error) {
             alert("Please fill all the input on login form first!");
@@ -53,8 +56,8 @@ class LoginForm extends React.Component {
                   <input
                     required
                     type="email"
-                    name=""
-                    id=""
+                    name="email"
+                    id="email-value"
                     placeholder="Your email"
                     onChange={e => {
                       this.setState({ email: e.target.value });
@@ -67,8 +70,8 @@ class LoginForm extends React.Component {
                   <input
                     required
                     type="password"
-                    name=""
-                    id=""
+                    name="password"
+                    id="password-value"
                     placeholder="Your password"
                     onChange={e => {
                       this.setState({ password: e.target.value });

@@ -20,8 +20,7 @@ class BorrowButton extends React.Component {
     const rentData = {
       available: "false"
     };
-    const setAvailable = rentData.available;
-    this.props.dispatch(borrowBook(this.state.id, setAvailable));
+    this.props.dispatch(borrowBook(this.state.id, rentData));
     this.props.history.push("/books/" + this.state.id);
   };
 
@@ -29,8 +28,7 @@ class BorrowButton extends React.Component {
     const returnData = {
       available: "true"
     };
-    const setAvailable = returnData.available;
-    this.props.dispatch(returnBook(this.state.id, setAvailable));
+    this.props.dispatch(returnBook(this.state.id, returnData));
     this.props.history.push("/books/" + this.state.id);
   };
 
@@ -56,9 +54,9 @@ class BorrowButton extends React.Component {
             <div className="book-cover-img">
               <img src={this.state.imageURL} alt="book-cover.img" />
             </div>
-            {/* <form> */}
-            <div className="borrow-btn">{buttonStatus}</div>
-            {/* </form> */}
+            <form>
+              <div className="borrow-btn">{buttonStatus}</div>
+            </form>
           </aside>
         </section>
       </div>

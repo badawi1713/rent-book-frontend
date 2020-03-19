@@ -1,9 +1,9 @@
 import React from "react";
 import Profile from "../../assets/images/profile.jpg";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-const Sidebar = () => {
-  const closeNav = () => {
+const Sidebar = props => {
+  const closeNav = e => {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
     document.getElementById("openSidebar").style.display = "flex";
@@ -39,6 +39,12 @@ const Sidebar = () => {
     };
     return false;
   };
+
+  const logout = () => {
+    localStorage.clear("token");
+    localStorage.clear("id");
+    props.history.push("/");
+  };
   return (
     <div>
       <aside id="mySidebar" className="aside-nav-container">
@@ -66,10 +72,10 @@ const Sidebar = () => {
               </a>
             </li>
             <li>
-              <Link to={"/"}>
-                {/* eslint-disable-next-line */}
-                <a href="#">Logout</a>
-              </Link>
+              {/* <Link to={"/"}> */}
+              {/* eslint-disable-next-line */}
+              <a onClick={logout}>Logout</a>
+              {/* </Link> */}
             </li>
           </ul>
         </nav>
@@ -78,4 +84,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);

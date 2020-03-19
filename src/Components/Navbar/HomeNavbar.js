@@ -1,10 +1,10 @@
 import React from "react";
-
-// import Truncate from "react-truncate";
-// import { Link } from "react-router-dom";
 import bookLogo from "../../assets/images/logo.png";
 import HomeCardList from "../Card/HomeCardList";
-import Axios from "axios";
+// import Axios from "axios";
+import { connect } from "react-redux";
+// import { bindActionCreators } from "redux";
+import { searchBookTitle } from "../../Redux/actions/books";
 class HomeNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -15,34 +15,11 @@ class HomeNavbar extends React.Component {
       loading: false,
       message: ""
     };
-    this.cancel = "";
   }
 
-  getSearchResults = query => {
-    const searchURL = `/api/v1/books?search=${query}`;
-
-    if (this.cancel) {
-      this.cancel.cancel();
-    }
-    this.cancel = Axios.CancelToken.source();
-
-    Axios.get(searchURL, {
-      cancelToken: this.cancel.token
-    })
-      .then(({ data }) => {
-        // console.log(data.data);
-        this.setState({
-          results: data.data
-        });
-      })
-      .catch(error => {
-        if (Axios.isCancel(error) || error) {
-          this.setState({
-            loading: false,
-            message: "Failed to fetch the data. Data not found!"
-          });
-        }
-      });
+  getSearchResults = async () => {
+    await this.props.dispatch(searchBookTitle(this.state.query));
+    console.log("search query", this.props.title.bookData.data);
   };
 
   handleOnInputChange = event => {
@@ -66,9 +43,9 @@ class HomeNavbar extends React.Component {
     }
   };
 
-  componentDidMount = () => {
-    this.getSearchResults();
-  };
+  // componentDidMount = () => {
+  //   this.getSearchResults();
+  // };
 
   openNav = () => {
     // document.getElementById("mySidenav").style.width = "100%";
@@ -85,8 +62,8 @@ class HomeNavbar extends React.Component {
     return false;
   };
   render() {
-    const { query } = this.state;
-    console.log(this.state);
+    // const { searchBookTitle, title } = this.state;
+    // console.log(this.state);
     // console.log(this.renderSearchResults);
     return (
       <div className="top-nav-container">
@@ -109,7 +86,6 @@ class HomeNavbar extends React.Component {
                 style={{ fontFamily: "Arial, FontAwesome" }}
                 type="text"
                 placeholder="&#xf002; Search book"
-                value={query}
               />
             </li>
           </ul>
@@ -122,4 +98,12 @@ class HomeNavbar extends React.Component {
   }
 }
 
-export default HomeNavbar;
+function mapStateToProps({ book }) {
+  return { title: book };
+}
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ searchBookTitle }, dispatch);
+// }
+
+export default connect(mapStateToProps)(HomeNavbar);
