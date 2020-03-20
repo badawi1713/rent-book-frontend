@@ -2,19 +2,19 @@ import React from "react";
 import Truncate from "react-truncate";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+// import { render } from "@testing-library/react";
 
 class HomeCardList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       search: "",
-      currentlyDisplayed: this.props.data
+      library: this.props.data
     };
-
-    // console.log("data:", this.state.currentlyDisplayed);
   }
 
   render() {
+    console.log("length", this.props.data.length);
     return (
       <div>
         <section className="content-container">
@@ -23,8 +23,7 @@ class HomeCardList extends React.Component {
               <h1>Data is empty</h1>
             </div>
           ) : (
-            // props.data.filter(props.search => item.title.includes(props.search))
-            this.props.data.map((item, index) => (
+            this.props.book.bookData.data.map((item, index) => (
               <div key={index} className="card-container">
                 <Link to={{ pathname: `/books/${item.id}`, book: item }}>
                   <img src={item.imageURL} alt="book-cover" />
@@ -58,9 +57,9 @@ class HomeCardList extends React.Component {
   }
 }
 
-function mapStateToProps({ bookData }) {
+function mapStateToProps({ book }) {
   return {
-    bookData: bookData
+    book
   };
 }
 

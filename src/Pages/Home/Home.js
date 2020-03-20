@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import Axios from "axios";
+// import Axios from "axios";
 
 import { connect } from "react-redux";
 import { getAllBook } from "../../Redux/actions/books";
@@ -12,28 +12,19 @@ import HomeCardList from "../../Components/Card/HomeCardList";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import AddModal from "../../Components/Modal/AddModal";
 import "./Home.css";
-const URL_STRING = "/api/v1/books";
+// const URL_STRING = "/api/v1/books";
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      library: []
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  state = {
+    library: []
+  };
+  // }
 
   getAllBook = async () => {
-    // console.log("Book query:", this.props.data);
     await this.props.dispatch(getAllBook());
     this.setState({
       library: this.props.data.book.bookData.data
-    });
-  };
-
-  searchBook = () => {
-    Axios.get(URL_STRING + "?="`${this.state.search}`).then(({ data }) => {
-      this.setState({
-        books: data.data
-      });
     });
   };
 

@@ -1,6 +1,5 @@
 import React from "react";
 import bookLogo from "../../assets/images/logo.png";
-import HomeCardList from "../Card/HomeCardList";
 // import Axios from "axios";
 import { connect } from "react-redux";
 // import { bindActionCreators } from "redux";
@@ -19,7 +18,7 @@ class HomeNavbar extends React.Component {
 
   getSearchResults = async () => {
     await this.props.dispatch(searchBookTitle(this.state.query));
-    console.log("search query", this.props.title.bookData.data);
+    // console.log("search query", this.props.book.bookData.data);
   };
 
   handleOnInputChange = event => {
@@ -29,22 +28,18 @@ class HomeNavbar extends React.Component {
     });
   };
 
-  renderSearchResults = () => {
-    const { results } = this.state;
-    if (Object.keys(results).length && results.length) {
-      console.log("data:", results);
-      return (
-        <div>
-          {results.map(result => {
-            return <HomeCardList search={this.state.search} />;
-          })}
-        </div>
-      );
-    }
-  };
-
-  // componentDidMount = () => {
-  //   this.getSearchResults();
+  // renderSearchResults = () => {
+  //   const { results } = this.state;
+  //   if (Object.keys(results).length && results.length) {
+  //     console.log("data:", results);
+  //     return (
+  //       <div>
+  //         {results.map(result => {
+  //           return <HomeCardList search={this.state.search} />;
+  //         })}
+  //       </div>
+  //     );
+  //   }
   // };
 
   openNav = () => {
@@ -106,7 +101,7 @@ class HomeNavbar extends React.Component {
 }
 
 function mapStateToProps({ book }) {
-  return { title: book };
+  return { book };
 }
 
 // function mapDispatchToProps(dispatch) {
