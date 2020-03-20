@@ -14,13 +14,14 @@ class HomeCardList extends React.Component {
   }
 
   render() {
-    console.log("length", this.props.data.length);
-    return (
-      <div>
+    let cardListData;
+
+    if (this.props.data.length > 1) {
+      cardListData = (
         <section className="content-container">
-          {this.props.data.length < 1 ? (
+          {this.props.book.isRejected ? (
             <div className="data-empty">
-              <h1>Data is empty</h1>
+              <h1>Data is Not Found!</h1>
             </div>
           ) : (
             this.props.book.bookData.data.map((item, index) => (
@@ -52,8 +53,17 @@ class HomeCardList extends React.Component {
             ))
           )}
         </section>
-      </div>
-    );
+      );
+    } else {
+      cardListData = (
+        <section className="content-container">
+          <div className="data-empty">
+            <h1>Library is empty!</h1>
+          </div>
+        </section>
+      );
+    }
+    return <div>{cardListData}</div>;
   }
 }
 

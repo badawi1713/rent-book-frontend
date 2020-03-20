@@ -259,6 +259,7 @@ ul {
 
 /* media 700px */
 @media screen and (max-width: 1200px) {
+
   /* content title */
   .content-title {
     margin-top: 10px;
@@ -338,6 +339,7 @@ ul {
     border: 1px solid #cacaca;
     height: 30px;
     border-radius: 35px;
+    font-size: 12pt;
   }
 
   /* aside-navbar */

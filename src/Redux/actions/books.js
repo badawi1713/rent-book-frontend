@@ -63,3 +63,10 @@ export const searchBookTitle = title => {
     payload: Axios.get("/api/v1/books?search=" + title)
   };
 };
+
+export const sortBookBy = column => {
+  return {
+    type: "SORT_BOOK",
+    payload: Axios.get("/api/v1/books?sortBy=" + column)
+  };
+};

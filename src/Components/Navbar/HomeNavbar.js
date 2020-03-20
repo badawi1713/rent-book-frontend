@@ -1,8 +1,6 @@
 import React from "react";
 import bookLogo from "../../assets/images/logo.png";
-// import Axios from "axios";
 import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
 import { searchBookTitle } from "../../Redux/actions/books";
 class HomeNavbar extends React.Component {
   constructor(props) {
@@ -18,7 +16,6 @@ class HomeNavbar extends React.Component {
 
   getSearchResults = async () => {
     await this.props.dispatch(searchBookTitle(this.state.query));
-    // console.log("search query", this.props.book.bookData.data);
   };
 
   handleOnInputChange = event => {
@@ -28,22 +25,7 @@ class HomeNavbar extends React.Component {
     });
   };
 
-  // renderSearchResults = () => {
-  //   const { results } = this.state;
-  //   if (Object.keys(results).length && results.length) {
-  //     console.log("data:", results);
-  //     return (
-  //       <div>
-  //         {results.map(result => {
-  //           return <HomeCardList search={this.state.search} />;
-  //         })}
-  //       </div>
-  //     );
-  //   }
-  // };
-
   openNav = () => {
-    // document.getElementById("mySidenav").style.width = "100%";
     if (window.matchMedia("(max-width: 1200px)").matches) {
       document.getElementById("mySidebar").style.width = "100%";
       document.getElementById("main").style.marginLeft = "0";
@@ -57,9 +39,6 @@ class HomeNavbar extends React.Component {
     return false;
   };
   render() {
-    // const { searchBookTitle, title } = this.state;
-    // console.log(this.state);
-    // console.log(this.renderSearchResults);
     return (
       <div className="top-nav-container">
         <nav className="top-nav">
@@ -103,9 +82,5 @@ class HomeNavbar extends React.Component {
 function mapStateToProps({ book }) {
   return { book };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ searchBookTitle }, dispatch);
-// }
 
 export default connect(mapStateToProps)(HomeNavbar);
