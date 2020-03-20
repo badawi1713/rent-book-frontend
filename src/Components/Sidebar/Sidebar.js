@@ -41,7 +41,7 @@ const Sidebar = props => {
   };
 
   const logout = () => {
-    localStorage.clear("token");
+    localStorage.clear("TOKEN_KEY");
     localStorage.clear("id");
     props.history.push("/");
   };

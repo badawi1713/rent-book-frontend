@@ -64,9 +64,9 @@ export const searchBookTitle = title => {
   };
 };
 
-export const sortBookBy = column => {
+export const sortBookBy = (column, sort) => {
   return {
     type: "SORT_BOOK",
-    payload: Axios.get("/api/v1/books?sortBy=" + column)
+    payload: Axios.get(`/api/v1/books?sortBy=${column}&sort=${sort}`)
   };
 };

@@ -1,18 +1,44 @@
 import React from "react";
 import bookLogo from "../../assets/images/logo.png";
 import { connect } from "react-redux";
-import { searchBookTitle } from "../../Redux/actions/books";
+import { searchBookTitle, sortBookBy } from "../../Redux/actions/books";
 class HomeNavbar extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      query: "",
-      results: {},
-      loading: false,
-      message: ""
-    };
-  }
+  state = {
+    query: "",
+    results: {},
+    loading: false,
+    message: "",
+    sortBy: ["genre", "title", "released_date", "available"],
+    sort: ""
+  };
+  // }
+
+  getSortByGenre = async () => {
+    await this.props.dispatch(
+      sortBookBy(this.state.sortBy[0], this.state.sort)
+    );
+  };
+
+  getSortByTitle = async () => {
+    await this.props.dispatch(
+      sortBookBy(this.state.sortBy[1], this.state.sort)
+    );
+  };
+
+  getSortByReleasedDate = async () => {
+    await this.props.dispatch(
+      sortBookBy(this.state.sortBy[2], this.state.sort)
+    );
+  };
+
+  getSortByAvailable = async () => {
+    await this.props.dispatch(
+      sortBookBy(this.state.sortBy[3], this.state.sort)
+    );
+  };
 
   getSearchResults = async () => {
     await this.props.dispatch(searchBookTitle(this.state.query));
@@ -49,17 +75,24 @@ class HomeNavbar extends React.Component {
               </div>
             </li>
             <li>
-              <div>
-                All Categories{" "}
-                <i className="fa fa-caret-down">
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </i>
+              <div class="dropdown">
+                Sort By <i className="fa fa-caret-down"></i>
+                <div class="dropdown-content">
+                  <li onClick={this.getSortByGenre}>Genre</li>
+                  <li onClick={this.getSortByTitle}>Title</li>
+                  <li onClick={this.getSortByReleasedDate}>Released Date</li>
+                  <li onClick={this.getSortByAvailable}>Available</li>
+                </div>
               </div>
             </li>
             <li>
-              All Time <i className="fa fa-caret-down"></i>
+              <div class="dropdown">
+                Sort <i className="fa fa-caret-down"></i>
+                <div class="dropdown-content">
+                  <li onClick={this.state.sort}>Ascending</li>
+                  <li onClick={this.state.sort}>Descending</li>
+                </div>
+              </div>
             </li>
             <li>
               <input

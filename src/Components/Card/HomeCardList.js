@@ -21,7 +21,7 @@ class HomeCardList extends React.Component {
         <section className="content-container">
           {this.props.book.isRejected ? (
             <div className="data-empty">
-              <h1>Data is Not Found!</h1>
+              <h1>Book is Not Found</h1>
             </div>
           ) : (
             this.props.book.bookData.data.map((item, index) => (
