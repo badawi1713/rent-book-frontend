@@ -2,14 +2,14 @@ import Axios from "axios";
 
 export const register = userData => {
   return {
-    type: "REGISTER",
+    type: "POST_REGISTER",
     payload: Axios.post(`/api/v1/users/register`, userData)
   };
 };
 
 export const login = (userData, history) => {
   return {
-    type: "REGISTER",
+    type: "POST_LOGIN",
     payload: Axios.post(`/api/v1/users/login`, userData)
       .then(result => {
         console.log("token" + result.data.result.token);
