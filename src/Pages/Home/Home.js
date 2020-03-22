@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-// import Axios from "axios";
 
 import { connect } from "react-redux";
 import { getAllBook } from "../../Redux/actions/books";
@@ -14,15 +13,11 @@ import AddModal from "../../Components/Modal/AddModal";
 import "./Home.css";
 import "../../Components/Card/Pagination.css";
 
-// const URL_STRING = "/api/v1/books";
 class Home extends Component {
-  // constructor(props) {
-  //   super(props);
   state = {
     library: [],
     pageNumber: 1
   };
-  // }
 
   getAllBook = async () => {
     await this.props.dispatch(getAllBook(this.state.pageNumber));

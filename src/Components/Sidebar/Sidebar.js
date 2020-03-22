@@ -45,6 +45,9 @@ const Sidebar = props => {
     localStorage.clear("id");
     props.history.push("/");
   };
+
+  const fullname = localStorage.getItem("fullname");
+
   return (
     <div>
       <aside id="mySidebar" className="aside-nav-container">
@@ -53,7 +56,7 @@ const Sidebar = props => {
         </div>
         <div className="profile-container">
           <img src={Profile} width="100%" alt="profil.jpg" />
-          <h3>Dzaky Badawi</h3>
+          <h3>{fullname}</h3>
         </div>
         <nav className="aside-nav">
           <ul>

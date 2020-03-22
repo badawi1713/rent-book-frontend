@@ -39,84 +39,84 @@ class RegisterForm extends React.Component {
           </div>
           <div className="login-form">
             <div className="login-form-body">
-              {/* <form action=""> */}
-              <div className="input-wrapper register-form-input">
-                <div className="input-items">
-                  <label for="">Username</label>
-                  <br />
-                  <input
-                    required
-                    value={this.state.username}
-                    type="text"
-                    name="username"
-                    id="registerUsername"
-                    placeholder="Input username"
-                    onChange={e => {
-                      this.setState({ username: e.target.value });
-                    }}
-                  />
+              <form action="">
+                <div className="input-wrapper register-form-input">
+                  <div className="input-items">
+                    <label for="">Username</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.username}
+                      type="text"
+                      name="username"
+                      id="registerUsername"
+                      placeholder="Input username"
+                      onChange={e => {
+                        this.setState({ username: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="input-items">
+                    <label for="">Fullname</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.fullname}
+                      type="text"
+                      name="fullname"
+                      id="registerFullname"
+                      placeholder="Input fullname"
+                      onChange={e => {
+                        this.setState({ fullname: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="input-items">
+                    <label for="">Email Address</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.email}
+                      type="email"
+                      name="email"
+                      id="registerEmail"
+                      placeholder="Input email"
+                      onChange={e => {
+                        this.setState({ email: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="input-items">
+                    <label for="">Password</label>
+                    <br />
+                    <input
+                      required
+                      value={this.state.password}
+                      type="password"
+                      name="password"
+                      id="registerPassword"
+                      placeholder="Input password"
+                      onChange={e => {
+                        this.setState({ password: e.target.value });
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="input-items">
-                  <label for="">Fullname</label>
-                  <br />
-                  <input
-                    required
-                    value={this.state.fullname}
-                    type="text"
-                    name="fullname"
-                    id="registerFullname"
-                    placeholder="Input fullname"
-                    onChange={e => {
-                      this.setState({ fullname: e.target.value });
-                    }}
-                  />
+                <div className="form-btn">
+                  <ul>
+                    <li>
+                      <button type="submit" onClick={this.registerNewUser}>
+                        Sign Up
+                      </button>
+                    </li>
+                    <li>
+                      <Link to={"/"}>
+                        <button type="button">Sign In</button>
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
-                <div className="input-items">
-                  <label for="">Email Address</label>
-                  <br />
-                  <input
-                    required
-                    value={this.state.email}
-                    type="email"
-                    name="email"
-                    id="registerEmail"
-                    placeholder="Input email"
-                    onChange={e => {
-                      this.setState({ email: e.target.value });
-                    }}
-                  />
-                </div>
-                <div className="input-items">
-                  <label for="">Password</label>
-                  <br />
-                  <input
-                    required
-                    value={this.state.password}
-                    type="password"
-                    name="password"
-                    id="registerPassword"
-                    placeholder="Input password"
-                    onChange={e => {
-                      this.setState({ password: e.target.value });
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="form-btn">
-                <ul>
-                  <li>
-                    <button type="submit" onClick={this.registerNewUser}>
-                      Sign Up
-                    </button>
-                  </li>
-                  <li>
-                    <Link to={"/"}>
-                      <button type="button">Sign In</button>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              {/* </form> */}
+              </form>
             </div>
           </div>
           <div className="footer">

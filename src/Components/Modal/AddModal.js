@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Axios from "axios";
 import { connect } from "react-redux";
 import { postNewBook } from "../../Redux/actions/books";
 import { getAllGenres } from "../../Redux/actions/genres";

@@ -52,7 +52,7 @@ class HomeNavbar extends React.Component {
   };
 
   openNav = () => {
-    if (window.matchMedia("(max-width: 1200px)").matches) {
+    if (window.matchMedia("(max-width: 900px)").matches) {
       document.getElementById("mySidebar").style.width = "100%";
       document.getElementById("main").style.marginLeft = "0";
       document.getElementById("openSidebar").style.display = "none";

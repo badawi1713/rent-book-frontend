@@ -9,7 +9,7 @@ export const getAllBook = page => {
         "Content-Type": "application/x-www-form-urlencoded",
         Authorization: "Badawi",
         "User-token": id,
-        "x-token": "barier " + token
+        "x-token": "barrier " + token
       }
     })
   };

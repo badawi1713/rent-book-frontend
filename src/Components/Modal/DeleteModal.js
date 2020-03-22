@@ -2,7 +2,6 @@ import React from "react";
 
 import "./styles/DeleteModal.css";
 import checkedLogo from "../../assets/images/checked.png";
-// import Axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteBookData } from "../../Redux/actions/books";

@@ -18,6 +18,7 @@ export const login = (userData, history) => {
           try {
             localStorage.setItem("KEY_TOKEN", result.data.result.token);
             localStorage.setItem("id", result.data.result.id);
+            localStorage.setItem("fullname", result.data.result.fullname);
             history.push("/home");
           } catch (error) {
             alert("Oops something went wrong!");

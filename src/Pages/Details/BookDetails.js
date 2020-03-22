@@ -5,7 +5,6 @@ import BookContent from "../../Components/Book/BookContent";
 import BorrowButton from "../../Components/Book/BorrowButton";
 import EditModal from "../../Components/Modal/EditModal";
 import DeleteModal from "../../Components/Modal/DeleteModal";
-// import Axios from "axios";
 import { connect } from "react-redux";
 import { getBookById } from "../../Redux/actions/books";
 class BookDetails extends React.Component {

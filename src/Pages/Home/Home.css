@@ -28,11 +28,10 @@ ul {
 .aside-nav-container {
   height: 100%;
   position: fixed;
-  left: 0;
+  left: -100;
   top: 0;
   overflow-x: hidden;
   transition: 0.3s;
-  /* grid-area: aside-nav; */
   box-shadow: 5px 0px 6px rgba(0, 0, 0, 0.3);
   background: #fff;
   z-index: 1;
@@ -43,19 +42,15 @@ ul {
   grid-area: carousel-section;
   grid-template-columns: 1fr;
 
-  /* background-color: black; */
 }
 
 .content-title {
-  /* background-color: grey; */
   margin-top: 50px;
-  /* padding-left: 40px;*/
   margin-left: 50px;
   grid-area: content-title;
 }
 
 .content-container {
-  /* background-color: black; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-left: 20px;
@@ -87,7 +82,6 @@ ul {
   justify-content: space-between;
   padding: 16px 0;
   font-size: 13px;
-  /* cursor: pointer; */
 }
 
 .top-nav .logo {
@@ -131,19 +125,8 @@ ul {
 .top-nav ul li input:focus {
   outline: none;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
-  /* border: 1px solid aqua; */
-  /* border-radius: 35px; */
-}
 
-/* dropdown menu */
-/* .dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-} */
+}
 
 .dropdown {
   position: relative;
@@ -176,10 +159,6 @@ ul {
   display: block;
   cursor: pointer;
 }
-
-/* .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-} */
 
 /* end of dropdown menu */
 

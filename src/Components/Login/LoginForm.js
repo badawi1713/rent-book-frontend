@@ -3,7 +3,6 @@ import Logo from "../../assets/images/bookshelf-logo.png";
 import { Link, withRouter } from "react-router-dom";
 import { login } from "../../Redux/actions/users";
 import { connect } from "react-redux";
-// import Axios from "axios";
 class LoginForm extends React.Component {
   state = {
     email: "",

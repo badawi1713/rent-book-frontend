@@ -1,5 +1,4 @@
 import React from "react";
-// import Axios from "axios";
 import { connect } from "react-redux";
 import { borrowBook, returnBook } from "../../Redux/actions/books";
 import { withRouter } from "react-router-dom";
