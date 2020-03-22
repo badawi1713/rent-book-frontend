@@ -1,10 +1,10 @@
 import Axios from "axios";
 const id = localStorage.getItem("id");
 const token = localStorage.getItem("KEY_TOKEN");
-export const getAllBook = () => {
+export const getAllBook = page => {
   return {
     type: "GET_BOOK",
-    payload: Axios.get("/api/v1/books/", {
+    payload: Axios.get(`/api/v1/books/?page=${page}`, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Authorization: "Badawi",

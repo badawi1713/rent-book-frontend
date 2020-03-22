@@ -2,6 +2,7 @@ import React from "react";
 import Truncate from "react-truncate";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "./Pagination.css";
 // import { render } from "@testing-library/react";
 
 class HomeCardList extends React.Component {
@@ -15,7 +16,8 @@ class HomeCardList extends React.Component {
 
   render() {
     let cardListData;
-
+    let paginationSection;
+    console.log("length:", this.props.data.length);
     if (this.props.data.length > 1) {
       cardListData = (
         <section className="content-container">
@@ -56,14 +58,80 @@ class HomeCardList extends React.Component {
       );
     } else {
       cardListData = (
-        <section className="content-container">
-          <div className="data-empty">
-            <h1>Library is empty!</h1>
+        <div>
+          <section className="content-container">
+            <div className="data-empty">
+              <h1>Library is empty!</h1>
+            </div>
+          </section>
+          <section style={{ display: "none" }} className="pagination-container">
+            <div class="pagination">
+              <p
+                onClick={this.props.prevPage.bind(this)}
+                style={{ cursor: "pointer" }}
+              >
+                ❮
+              </p>
+              <p>{this.props.page}</p>
+              <p
+                onClick={this.props.nextPage.bind(this)}
+                style={{ cursor: "pointer" }}
+              >
+                ❯
+              </p>
+            </div>
+          </section>
+        </div>
+      );
+    }
+
+    if (this.props.book.isRejected) {
+      paginationSection = (
+        <section style={{ display: "none" }} className="pagination-container">
+          <div class="pagination">
+            <p
+              onClick={this.props.prevPage.bind(this)}
+              style={{ cursor: "pointer" }}
+            >
+              ❮
+            </p>
+            <p>{this.props.page}</p>
+            <p
+              onClick={this.props.nextPage.bind(this)}
+              style={{ cursor: "pointer" }}
+            >
+              ❯
+            </p>
+          </div>
+        </section>
+      );
+    } else {
+      paginationSection = (
+        <section className="pagination-container">
+          <div class="pagination">
+            <p
+              onClick={this.props.prevPage.bind(this)}
+              style={{ cursor: "pointer" }}
+            >
+              ❮
+            </p>
+            <p>{this.props.page}</p>
+            <p
+              onClick={this.props.nextPage.bind(this)}
+              style={{ cursor: "pointer" }}
+            >
+              ❯
+            </p>
           </div>
         </section>
       );
     }
-    return <div>{cardListData}</div>;
+    return (
+      <div>
+        {cardListData}
+        {paginationSection}
+      </div>
+    );
   }
 }
 

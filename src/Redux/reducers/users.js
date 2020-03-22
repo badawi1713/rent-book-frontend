@@ -27,7 +27,7 @@ const userReducers = (state = initialValue, action) => {
         ...state,
         isPending: false,
         isFulfilled: true,
-        userData: action.payload.data
+        userData: action.payload
       };
     case "POST_REGISTER_PENDING":
       return {
